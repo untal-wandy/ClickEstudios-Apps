@@ -1,0 +1,50 @@
+
+<style>
+      section
+      {
+            color: rgb(255, 255, 255);
+      }
+      .content-sv
+      {
+            background-color:#19191981;
+            /* border: 1px solid #414141; */
+            border-radius: 1.9rem;
+            width: 20rem;
+      }
+      .btn-reserva
+      {
+            background-color: #5c9dff8b !important;
+            color: white;
+            border-radius: 1rem;
+            padding: 5px 20px;
+            border: none;
+      }
+</style>
+<section class="">
+      <h6 class="text-end pt-5 p-1">
+            Nuestros servicios
+      </h6>
+      {% if servicios %}
+            <div class='d-flex overflow-scroll w-100'>
+                  {% for s in servicios %}
+                  <a href="" class="text-decoration-none text-white-50">
+                        <div class="content-sv d-flex overflow-scroll d-flex flex-wrap p-2">
+                              <div class="position-relative" style=" background-image: url({{s.img.url}}); border-radius: 2rem;
+                              background-repeat: no-repeat;
+                              background-size: cover;
+                              height: 10rem;
+                              width: 100%;
+                              background-position: center;">
+                                    <button class="bg-transparent bg-black bg-opacity-75 position-absolute bottom-0 end-0 text-white rounded-4 p-1 ps-3 pe-3">
+                                          Ver mas
+                                    </button>
+                              </div>
+                              <span class="ms-2">
+                                    {{s.name}}
+                              </span>
+                        </div>
+                  </a>
+                  {% endfor %}
+            </div>
+      {% endif %}
+</section>

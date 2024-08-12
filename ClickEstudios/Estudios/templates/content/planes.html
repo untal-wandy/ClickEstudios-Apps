@@ -1,0 +1,53 @@
+{% load humanize %}
+<style>
+      section
+      {
+            color: rgb(255, 255, 255);
+      }
+      .content-plane
+      {
+            background-color:#19191981;
+            border: 1px solid #414141;
+            border-radius: 2rem;
+            min-width: 93%;
+
+      }
+      .btn-reserva
+      {
+            background-color: #5c9dff8b !important;
+            color: white;
+            border-radius: 1rem;
+            padding: 5px 20px;
+            border: none;
+      }
+</style>
+{% if planes %}
+<section class="pt-5">
+      <h6 class="text-start pt-5">
+            Nuestros Planes
+      </h6>
+      <div class='d-flex overflow-scroll'>
+            {% for p in  planes %}
+            <div class="content-plane m-1 d-flex overflow-scroll d-flex flex-wrap p-3">
+                  <strong class="w-100">
+                     {{ p.name }}
+                  </strong>
+                  <span class="w-100 ps-3">
+                       $ {{p.price|intcomma}}
+                  </span>
+                  {% if p.plan %}
+                        <div class="ps-3 mt-2 stributes overflow-scroll" 
+                              style='height: 6rem;'>
+                              {% for pc in p.plan.all %}
+                                     <li> {{pc.name}} </li>
+                              {% endfor %}
+                        </div>
+                  {% endif %}
+                  <div class="w-100 d-flex justify-content-center mt-3">
+                        <button class="btn-reserva">Reservar</button>
+                  </div>
+            </div>
+      {% endfor %}
+      </div>
+</section>
+{% endif %}
